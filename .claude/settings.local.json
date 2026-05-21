@@ -3,7 +3,22 @@
     "allow": [
       "Bash(npm install *)",
       "mcp__neon__describe_table_schema",
-      "mcp__neon__run_sql_transaction"
+      "mcp__neon__run_sql_transaction",
+      "Bash(Get-ChildItem -Path \"D:\\\\ClaudeCodeProj\\\\liftingdiarycourse\" -Force)",
+      "Bash(Select-Object Name, FullName)",
+      "Bash(npm run *)",
+      "Bash(npx tsc *)",
+      "Bash(npx shadcn@latest add calendar popover card badge --yes)",
+      "Bash(npm list *)",
+      "Bash(node -e \"const rdp = require\\('react-day-picker'\\); console.log\\(Object.keys\\(rdp\\)\\)\")",
+      "Bash(node -e \"const { UI } = require\\('react-day-picker'\\); console.log\\(JSON.stringify\\(UI, null, 2\\)\\)\")",
+      "Bash(npx shadcn@latest add calendar popover card)",
+      "Bash(node -e \"require\\('date-fns'\\)\")",
+      "Bash(New-Item -ItemType Directory -Path \"D:\\\\ClaudeCodeProj\\\\liftingdiarycourse\\\\src\\\\app\\\\dashboard\" -Force)",
+      "Bash(Out-Null)",
+      "Bash(Write-Host \"done\")",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/react-day-picker/package.json'\\).version\\)\")",
+      "Bash(node -e \"const cn = require\\('./node_modules/react-day-picker'\\); console.log\\(Object.keys\\(cn.getDefaultClassNames\\(\\)\\)\\)\")"
     ]
   },
   "enableAllProjectMcpServers": true,
