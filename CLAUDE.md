@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **IMPORTANT:** Before writing any code, always read the relevant documentation file in the `/docs` directory first. These files are the authoritative reference for this project's conventions and requirements. Currently available docs:
+> - `/docs/ui.md` — UI conventions and component guidelines
+> - `/docs/data-fetching.md` — Data fetching conventions and database query requirements
+
 @AGENTS.md
 
 ## Commands
