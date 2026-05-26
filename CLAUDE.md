@@ -5,6 +5,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 > **IMPORTANT:** Before writing any code, always read the relevant documentation file in the `/docs` directory first. These files are the authoritative reference for this project's conventions and requirements. Currently available docs:
 > - `/docs/ui.md` — UI conventions and component guidelines
 > - `/docs/data-fetching.md` — Data fetching conventions and database query requirements
+> - `/docs/auth.md` — Auth conventions (Clerk)
+> - `/docs/data-mutations.md` — Data mutation conventions (Server Actions, Zod, `/data` helpers)
 
 @AGENTS.md
 
