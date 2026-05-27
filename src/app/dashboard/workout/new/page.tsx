@@ -1,9 +1,14 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { auth } from "@clerk/nextjs/server";
 import { ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { NewWorkoutForm } from "./NewWorkoutForm";
 
-export default function NewWorkoutPage() {
+export default async function NewWorkoutPage() {
+  const { userId } = await auth();
+  if (!userId) redirect("/sign-in");
+
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 p-6">
       <div className="mx-auto max-w-md space-y-6">

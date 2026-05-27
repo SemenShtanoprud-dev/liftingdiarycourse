@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 import { format, parseISO } from "date-fns";
 import { Dumbbell, Plus } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,6 +14,8 @@ export default async function DashboardPage({
   searchParams: Promise<{ date?: string }>;
 }) {
   const { userId } = await auth();
+  if (!userId) redirect("/sign-in");
+
   const params = await searchParams;
 
   const date =
@@ -20,7 +23,7 @@ export default async function DashboardPage({
       ? parseISO(params.date)
       : new Date();
 
-  const userWorkouts = await getWorkoutsForUserOnDate(userId!, date);
+  const userWorkouts = await getWorkoutsForUserOnDate(userId, date);
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 p-6">
