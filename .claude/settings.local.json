@@ -22,7 +22,16 @@
       "Bash(Get-ChildItem -Path \"D:\\\\ClaudeCodeProj\\\\liftingdiarycourse\" -Recurse -Directory)",
       "Bash(Select-Object -ExpandProperty FullName)",
       "PowerShell(head *)",
-      "Bash(node -e \"const p = require\\('./package.json'\\); console.log\\(JSON.stringify\\(Object.assign\\({}, p.dependencies, p.devDependencies\\), null, 2\\)\\)\")"
+      "Bash(node -e \"const p = require\\('./package.json'\\); console.log\\(JSON.stringify\\(Object.assign\\({}, p.dependencies, p.devDependencies\\), null, 2\\)\\)\")",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(git merge *)",
+      "Bash(gh *)",
+      "PowerShell(where.exe gh 2>&1; Write-Host \"---PATH entries---\"; $env:PATH -split \";\" | Where-Object { $_ -match \"gh|GitHub|cli\" })",
+      "Bash(git pull *)",
+      "Bash(git push *)",
+      "Bash(git stash *)"
     ]
   },
   "enableAllProjectMcpServers": true,
