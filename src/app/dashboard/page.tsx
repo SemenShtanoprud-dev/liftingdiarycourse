@@ -73,25 +73,27 @@ export default async function DashboardPage({
             ) : (
               <div className="space-y-3">
                 {userWorkouts.map((workout) => (
-                  <Card key={workout.id}>
-                    <CardHeader className="pb-2">
-                      <div className="flex items-start justify-between gap-2">
-                        <CardTitle className="text-base font-semibold">
-                          {workout.name ?? "Untitled Workout"}
-                        </CardTitle>
-                        {workout.completedAt && (
-                          <span className="text-xs text-zinc-400 shrink-0 mt-0.5">
-                            {format(workout.completedAt, "do MMM yyyy")}
-                          </span>
+                  <Link key={workout.id} href={`/dashboard/workout/${workout.id}`}>
+                    <Card className="hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors cursor-pointer">
+                      <CardHeader className="pb-2">
+                        <div className="flex items-start justify-between gap-2">
+                          <CardTitle className="text-base font-semibold">
+                            {workout.name ?? "Untitled Workout"}
+                          </CardTitle>
+                          {workout.completedAt && (
+                            <span className="text-xs text-zinc-400 shrink-0 mt-0.5">
+                              {format(workout.completedAt, "do MMM yyyy")}
+                            </span>
+                          )}
+                        </div>
+                        {workout.exercises.length > 0 && (
+                          <CardDescription className="text-xs">
+                            {workout.exercises.join(" · ")}
+                          </CardDescription>
                         )}
-                      </div>
-                      {workout.exercises.length > 0 && (
-                        <CardDescription className="text-xs">
-                          {workout.exercises.join(" · ")}
-                        </CardDescription>
-                      )}
-                    </CardHeader>
-                  </Card>
+                      </CardHeader>
+                    </Card>
+                  </Link>
                 ))}
               </div>
             )}

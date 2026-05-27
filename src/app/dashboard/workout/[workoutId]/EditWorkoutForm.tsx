@@ -1,7 +1,6 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useActionState, useRef, useState } from "react";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,22 +16,25 @@ type Props = {
 const initialState: UpdateWorkoutState = { success: false };
 
 export function EditWorkoutForm({ workoutId, defaultName, defaultStartedAt }: Props) {
-  const router = useRouter();
+  const [saved, setSaved] = useState(false);
+  const savedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const [state, formAction, pending] = useActionState(
-    (_prev: UpdateWorkoutState, formData: FormData) =>
-      updateWorkoutAction(_prev, {
+    async (_prev: UpdateWorkoutState, formData: FormData) => {
+      const result = await updateWorkoutAction(_prev, {
         workoutId,
         name: formData.get("name") as string,
         startedAt: formData.get("startedAt") as string,
-      }),
+      });
+      if (result.success) {
+        setSaved(true);
+        if (savedTimerRef.current) clearTimeout(savedTimerRef.current);
+        savedTimerRef.current = setTimeout(() => setSaved(false), 2000);
+      }
+      return result;
+    },
     initialState
   );
-
-  useEffect(() => {
-    if (state.success) {
-      router.push("/dashboard");
-    }
-  }, [state.success, router]);
 
   return (
     <form action={formAction} className="space-y-5">
@@ -66,7 +68,7 @@ export function EditWorkoutForm({ workoutId, defaultName, defaultStartedAt }: Pr
       </div>
 
       <Button type="submit" disabled={pending} className="w-full">
-        {pending ? "Saving…" : "Save changes"}
+        {pending ? "Saving…" : saved ? "Saved!" : "Save changes"}
       </Button>
     </form>
   );
