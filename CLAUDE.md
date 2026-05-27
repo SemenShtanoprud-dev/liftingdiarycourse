@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 > - `/docs/data-fetching.md` — Data fetching conventions and database query requirements
 > - `/docs/auth.md` — Auth conventions (Clerk)
 > - `/docs/data-mutations.md` — Data mutation conventions (Server Actions, Zod, `/data` helpers)
+> - `/docs/server-components.md` — Server Component conventions (async params, auth guards, notFound)
 
 @AGENTS.md
 

@@ -19,6 +19,32 @@ export async function createWorkout(params: {
   return workout;
 }
 
+export async function getWorkoutById(userId: string, workoutId: string) {
+  const [workout] = await db
+    .select({
+      id: workouts.id,
+      name: workouts.name,
+      startedAt: workouts.startedAt,
+    })
+    .from(workouts)
+    .where(and(eq(workouts.id, workoutId), eq(workouts.userId, userId)))
+    .limit(1);
+
+  return workout ?? null;
+}
+
+export async function updateWorkout(params: {
+  userId: string;
+  workoutId: string;
+  name: string | null;
+  startedAt: Date;
+}) {
+  await db
+    .update(workouts)
+    .set({ name: params.name, startedAt: params.startedAt })
+    .where(and(eq(workouts.id, params.workoutId), eq(workouts.userId, params.userId)));
+}
+
 export async function getWorkoutsForUserOnDate(userId: string, date: Date) {
   const start = new Date(date);
   start.setHours(0, 0, 0, 0);
