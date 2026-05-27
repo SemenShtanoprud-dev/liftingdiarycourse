@@ -37,21 +37,22 @@ export default async function DashboardPage({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-[auto_1fr]">
-          {/* Left column — always-open calendar */}
-          <Card className="h-fit">
-            <CardContent className="p-3">
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+              {format(date, "do MMM yyyy")}
+            </h2>
+            <div className="flex items-center gap-2">
+              <Link
+                href="/dashboard/workout/new"
+                className={buttonVariants({ size: "sm" })}
+              >
+                <Plus className="size-4" />
+                Log workout
+              </Link>
               <WorkoutDatePicker selected={date} />
-            </CardContent>
-          </Card>
-
-          {/* Right column — workouts for selected date */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-sm font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
-                {format(date, "do MMM yyyy")}
-              </h2>
             </div>
+          </div>
 
             {userWorkouts.length === 0 ? (
               <Card>
@@ -94,7 +95,6 @@ export default async function DashboardPage({
                 ))}
               </div>
             )}
-          </div>
         </div>
       </div>
     </div>
